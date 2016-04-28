@@ -7,3 +7,7 @@ body{
 #home{
 	background-image: url("../resource/BgBitMatchhome.jpg");
 }
+
+#profilepic{
+	background-image: url("../resource/standardimg.jpg");
+}
