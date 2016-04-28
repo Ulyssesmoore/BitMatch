@@ -8,6 +8,7 @@
 		<title>BitMatch | My Account</title>
 		<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 		<link rel="stylesheet" type="text/css" href="/main.css"/>
+		<link rel="shortcut icon" href="../resource/favicon.ico"/>
 	</head>
 	<body>
 		<div id="accountdiv">
@@ -15,7 +16,7 @@
 				<h1 class="header accountname">Account of ${loggedUser.name }</h1>
 				<div id="profilewrapper">
 					<div id="picwrapper">
-						<div id="profilepic" style="background-image:url('../resource/${loggedUser.username}.jpg');"></div>
+						<div id="profilepic" style="background-image:url('../resource/${loggedUser.username}.jpg'), url('../resource/standardimg.jpg');"></div>
 					</div>
 					<div id="descriptionwrapper">
 						<div id="description">

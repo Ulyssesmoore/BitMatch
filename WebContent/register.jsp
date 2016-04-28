@@ -12,6 +12,7 @@
   		<script type="text/javascript" src="/jquery.js"></script>
   		<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
   		<script type="text/javascript" src="/bitmatch.js"></script>
+  		<link rel="shortcut icon" href="../resource/favicon.ico"/>
 	</head>
 	<body>
 		<div class="bodydiv">

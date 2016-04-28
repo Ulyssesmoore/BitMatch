@@ -32,7 +32,7 @@ public class User {
 		setMinAge(mina);
 		setMaxAge(maxa);
 		age = getMyAge();
-	}
+	} 
 
 	public String getUsername() {
 		return username;
