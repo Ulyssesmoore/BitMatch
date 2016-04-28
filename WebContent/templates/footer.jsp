@@ -13,6 +13,9 @@
 		<ul>
 			<li><a href="/index.jsp">Login</a></li>
 			<li><a href="/register.jsp">Register</a></li>
+			<c:if test="${loggedUser.username != null }" >
+				<li><a href="/myaccount.jsp">My Account</a></li>
+			</c:if>	
 			<li><a href="#">Sitemap</a></li>
 		</ul>
 	</div>

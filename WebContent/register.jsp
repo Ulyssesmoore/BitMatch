@@ -6,15 +6,10 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>BitMatch | Register</title>
-		<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-		<link rel="stylesheet" type="text/css" href="/main.css"/>
-  		<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-  		<script type="text/javascript" src="/jquery.js"></script>
-  		<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-  		<script type="text/javascript" src="/bitmatch.js"></script>
-  		<link rel="shortcut icon" href="../resource/favicon.ico"/>
+		<%@ include file="/templates/imports.jsp" %>
 	</head>
 	<body>
+		<%@ include file="/templates/navbar.jsp" %>
 		<div class="bodydiv">
 			<div id="policy">
 				<form id="policyform">
@@ -75,7 +70,7 @@
 					<input name="registreer" value="Register" type="submit"/>
  				</form>
  			</div>
- 			<%@ include file="/footer.jsp" %>
+ 			<%@ include file="/templates/footer.jsp" %>
  		</div>	
 	</body>
 </html>
