@@ -11,10 +11,17 @@
 			<li><a href="#">About</a></li>
 		</ul>
 		<ul>
-			<li><a href="/index.jsp">Login</a></li>
+			<c:if test="${loggedUser.username == null }" >
+				<li><a href="/index.jsp">Login</a></li>
+			</c:if>
 			<li><a href="/register.jsp">Register</a></li>
 			<c:if test="${loggedUser.username != null }" >
-				<li><a href="/myaccount.jsp">My Account</a></li>
+				<li><a href="/user/myaccount.jsp">My Account</a></li>
+				<li>
+					<form action="/user/LogoutServlet.do" method="get">
+						<a href="/user/LogoutServlet.do">Logout</a>
+					</form>
+				</li>
 			</c:if>	
 			<li><a href="#">Sitemap</a></li>
 		</ul>

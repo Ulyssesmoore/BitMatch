@@ -1,4 +1,5 @@
-@import url("https://dl.dropboxusercontent.com/s/ka0tn1e8skaoj6d/main.css?dl=0");
+/*@import url("https://dl.dropboxusercontent.com/s/ka0tn1e8skaoj6d/main.css?dl=0");*/
+@import url("../style/main_offline.css");
 body{
 	background-image: url("../resource/bgpatternbitmatch.png");
 }

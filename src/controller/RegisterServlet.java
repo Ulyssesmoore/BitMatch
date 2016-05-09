@@ -1,6 +1,9 @@
 package controller;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -64,6 +67,27 @@ public class RegisterServlet extends HttpServlet{
 			 if(ds.registerUserForm(u))
 			 {
 				 System.out.println("User geregistreerd!");
+			 }
+			 try{
+				Class.forName("com.mysql.jdbc.Driver").newInstance();
+				Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bitmatch","root","");
+				System.out.println("Database Connected!");
+				PreparedStatement pstmt = conn.prepareStatement("INSERT INTO users(username, name, gender, email, birthdate, sexuality, minimumage, maximumage, userPassword) VALUE(?,?,?,?,?,?,?,?,?)");
+				pstmt.setString(1,u.getUsername());
+				pstmt.setString(2, u.getName());
+				pstmt.setString(3, u.getGender());
+				pstmt.setString(4, u.getEmail());
+				pstmt.setString(5, u.getBirthDate());
+				pstmt.setString(6, u.getSexuality());
+				pstmt.setInt(7, u.getMinAge());
+				pstmt.setInt(8, u.getMaxAge());
+				pstmt.setString(9, u.getPassword());
+				pstmt.executeUpdate();
+				conn.close();
+			 }
+			 catch(Exception e)
+			 {
+				 e.printStackTrace();
 			 }
 			 req.getRequestDispatcher("/index.jsp").forward(req, resp);
 		 }

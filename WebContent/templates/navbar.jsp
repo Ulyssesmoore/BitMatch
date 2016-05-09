@@ -22,6 +22,11 @@
 					<li><a href="#">Find Match</a></li>
 				</ul>
 			</li>
+			<li>
+				<form action="/user/LogoutServlet.do" method="get">
+					<a href="/user/LogoutServlet.do">Logout</a>
+				</form>
+			</li>
 		</c:if>
 	</ul>
 </nav>
