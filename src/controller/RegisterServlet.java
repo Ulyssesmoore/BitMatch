@@ -73,7 +73,7 @@ public class RegisterServlet extends HttpServlet{
 				Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bitmatch","root","");
 				System.out.println("Database Connected!");
 				PreparedStatement pstmt = conn.prepareStatement("INSERT INTO users(username, name, gender, email, birthdate, sexuality, minimumage, maximumage, userPassword) VALUE(?,?,?,?,?,?,?,?,?)");
-				pstmt.setString(1,u.getUsername());
+				pstmt.setString(1, u.getUsername());
 				pstmt.setString(2, u.getName());
 				pstmt.setString(3, u.getGender());
 				pstmt.setString(4, u.getEmail());
@@ -83,6 +83,16 @@ public class RegisterServlet extends HttpServlet{
 				pstmt.setInt(8, u.getMaxAge());
 				pstmt.setString(9, u.getPassword());
 				pstmt.executeUpdate();
+				u.setUserID(ds.userListSize());
+				PreparedStatement pstmt2 = conn.prepareStatement("INSERT INTO profile(userID, description, job, hobby, country, hometown, smoker) VALUE(?,?,?,?,?,?,?)");
+				pstmt2.setInt(1, u.getUserID());
+				pstmt2.setString(2, "");
+				pstmt2.setString(3, "");
+				pstmt2.setString(4, "");
+				pstmt2.setString(5, "");
+				pstmt2.setString(6, "");
+				pstmt2.setInt(7, 0);
+				pstmt2.executeUpdate();
 				conn.close();
 			 }
 			 catch(Exception e)

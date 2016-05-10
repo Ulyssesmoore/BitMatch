@@ -14,12 +14,7 @@
 				<h1 class="header">Login</h1>
 				<form action="/LoginServlet.do" method="post">
 					<div id="loginmessagebox">
-					<%
-						Object msgs = request.getAttribute("loginerror");
-						if (msgs != null) {
-							out.println(msgs);
-						}
-					%>
+						${loginerror}
 					</div>
 					<p>Username: </p> 
 					<input id="usernamelogin" name="username" type="text" value="${cookie.cUsername.value }"/>

@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class User {
+	private int userID;
 	private String username;
 	private String name;
 	private String gender;
@@ -17,6 +18,14 @@ public class User {
 	private int minAge;
 	private int maxAge;
 	private Date creationDate;
+	
+	private String job;
+	private String hometown;
+	private String country;
+	private String hobby;
+	private String description;
+	private boolean smoker;
+	
 	final String emailRegex ="^(((([\\w]+)\\.?)+[\\w]{1,})@((([\\w])+)\\.)+[\\w]{2,})$";
 	final String dateRegex = "^(((((0[1-9]|[1-2][0-9]|3[0-1])-((0[13578])|10|12))|((0[1-9]|[1-2][0-9]|30)-((0[469])|11))|((0[1-9]|1[0-9]|2[0-8])-02))-((?!0000)([0-9]{4})))|(29-02-((?!0000)([0-9]{2}(([02468][048])|([13579][26]))))))$";
 	
@@ -186,4 +195,60 @@ public class User {
 	public void setAge(int age) {
 		this.age = age;
 	}
+	
+	public String getJob() {
+		return job;
+	}
+
+	public void setJob(String job) {
+		this.job = job;
+	}
+
+	public String getHometown() {
+		return hometown;
+	}
+
+	public void setHometown(String hometown) {
+		this.hometown = hometown;
+	}
+
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
+	public String getHobby() {
+		return hobby;
+	}
+
+	public void setHobby(String hobby) {
+		this.hobby = hobby;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public boolean isSmoker() {
+		return smoker;
+	}
+
+	public void setSmoker(boolean smoker) {
+		this.smoker = smoker;
+	}
+
+	public int getUserID() {
+		return userID;
+	}
+
+	public void setUserID(int userID) {
+		this.userID = userID;
+	};
 }

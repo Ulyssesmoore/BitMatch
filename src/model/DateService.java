@@ -5,10 +5,11 @@ import java.util.ArrayList;
 public class DateService {
 	private ArrayList<User> allUsers = new ArrayList<>();
 	
-	public boolean registerUser(String unm, String pw, String em, String nm, String gd, String bd, String pref, int mina, int maxa)
+	public boolean registerUser(int id, String unm, String pw, String em, String nm, String gd, String bd, String pref, int mina, int maxa)
 	{
 		boolean b = true;
 		User us = new User(unm, nm, gd, em, bd, pw, pref, mina, maxa);
+		us.setUserID(id);
 		for (User u:allUsers)
 		{
 			if(us.equals(u))
@@ -19,6 +20,25 @@ public class DateService {
 		if(b)
 		{
 			allUsers.add(us);
+		}
+		return b;
+	}
+	
+	public boolean setProfile(int id, String desc, String job, String hobby, String country, String hometown, boolean smoker)
+	{
+		boolean b=false;
+		for (User u:allUsers)
+		{
+			if(u.getUserID()==id)
+			{
+				u.setDescription(desc);
+				System.out.println(u.getName());
+				u.setJob(job);
+				u.setHobby(hobby);
+				u.setCountry(country);
+				u.setHometown(hometown);
+				u.setSmoker(smoker);
+			}
 		}
 		return b;
 	}
@@ -51,5 +71,9 @@ public class DateService {
 			}
 		}
 		return user;
+	}
+	
+	public int userListSize(){
+		return allUsers.size();
 	}
 }

@@ -25,12 +25,7 @@
 				<h1 class="header">Register</h1>
 				<form action="/RegisterServlet.do" method="get">
 					<div id="messagebox">
-					<%
-						Object msgs = request.getAttribute("msgs");
-						if (msgs != null) {
-							out.println(msgs);
-						}
-					%>
+						${msgs }
 					</div>
 					<p>Username: </p> 
 					<input id="username" name="username" value="${param.username }" type="text"/>
@@ -45,7 +40,7 @@
     					<option value="Male">Male</option>
     					<option value="Female">Female</option>
     					<c:forEach items="${param.gender}" var="item">
-    					 	<option value="${item}"${(selectedGender == item) ? " selected='selected'" : "" }>${item}</option>
+    					 	<option class="invisible" value="${item}"${(selectedGender == item) ? " selected='selected'" : "" }>${item}</option>
    						 </c:forEach>
   					</select>
   					<p>Sexuality:</p>
@@ -54,7 +49,7 @@
     					<option value="I like women">I like women</option>
     					<option value="I like both">I like both</option>
     					<c:forEach items="${param.sexuality}" var="item">
-    					 	<option value="${item}"${(selectedSexuality == item) ? " selected='selected'" : "" }>${item}</option>
+    					 	<option class="invisible" value="${item}"${(selectedSexuality == item) ? " selected='selected'" : "" }>${item}</option>
    						 </c:forEach>
   					</select>
   					<p>Birthdate</p>

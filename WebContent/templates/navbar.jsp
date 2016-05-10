@@ -12,8 +12,8 @@
 				<a href="/user/myaccount.jsp">My Account</a>
 				<ul>
 					<li><a href="/user/myaccount.jsp">View Profile</a></li>
-					<li><a href="#">Edit Profile</a></li>
-				</ul>		
+					<li><a href="/user/editaccount.jsp">Edit Profile</a></li>
+				</ul>
 			</li>
 			<li>
 				<a href="#">Users</a>
