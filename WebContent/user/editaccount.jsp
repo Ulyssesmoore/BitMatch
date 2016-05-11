@@ -25,7 +25,6 @@
 							<p>Your name: </p>
 							<p>Password: </p>
 							<p>Repeat password: </p>
-							<p>Change profile picture: </p>
 							<p>Email-Address</p>
 							<p>Gender: </p>
 							<p>Sexuality: </p>
@@ -42,7 +41,6 @@
 							<input name="editname" type="text" value="${loggedUser.name }"/>
 							<input name="editpassword" type="password" value="${loggedUser.password }"/>
 							<input name="editpassword2" type="password" value="${loggedUser.password }"/>
-							<input name="editavatar" id="avatarpicker" type="file"/>
 							<input name="editemail" type="text" value="${loggedUser.email }"/>
 							<select name="editgender" name="gender">
 		    					<option value="Male">Male</option>

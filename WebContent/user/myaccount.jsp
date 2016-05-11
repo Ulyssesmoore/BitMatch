@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -21,6 +22,9 @@
 							<div id="details">
 								<ul>
 									<li>Name</li>
+									<c:if test="${fn:length(loggedUser.name)>15}">
+										<br>
+									</c:if>
 									<li>Gender</li>
 									<li>Age</li>
 									<li>Date of Birth</li>
