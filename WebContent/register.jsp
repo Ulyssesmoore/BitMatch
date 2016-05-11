@@ -11,21 +11,14 @@
 	<body>
 		<%@ include file="/templates/navbar.jsp" %>
 		<div class="bodydiv">
-			<div id="policy">
-				<form id="policyform">
-					<h1>BitMatch Policy</h1>
-					<p>BitMatch is a part of LifeInvader inc, a platform for social interaction. BitMatch doesn't take responsibility for any placed content.</p>
-					<p>To improve our services, we use the following data:</p>
-					<p>- Your Age <br>- Your Job<br>- Your Address<br>- All of your uploaded photo's<br>- Your GPS-location<br>- Any other useful data we can find</p>
-					<br>
-					<a href="#" id="readpolicy">Understood</a>
-				</form>1
-			</div>	
+			<%@ include file="/templates/policy.jsp" %>
 			<div class="wrapper register">
 				<h1 class="header">Register</h1>
 				<form action="/RegisterServlet.do" method="get">
 					<div id="messagebox">
-						${msgs }
+						<c:if test="${not empty msgs }">
+							<span class="icon icon-attention-circled"></span>${msgs }
+						</c:if>
 					</div>
 					<p>Username: </p> 
 					<input id="username" name="username" value="${param.username }" type="text"/>
@@ -60,7 +53,7 @@
 					<input id="minimumage" value="${param.minage }"  maxlength="2" name="minage" type="text"/>
 					<p>Maximum age of match:</p>
 					<input id=maximumage value="${param.maxage }" maxlength="2" name="maxage" type="text"/>
-					<input name="agreement" type="checkbox" value="checked"><label id="agreement">I have read and agree to the Terms of Service and <a id="policylink" href="#">Privacy Policy.</a></label>
+					<input name="agreement" type="checkbox" value="checked"><label id="agreement">I have read and agree to the Terms of Service and <a id="inlinepolicylink" href="#">Privacy Policy.</a></label>
 					<br><br>
 					<input name="registreer" value="Register" type="submit"/>
  				</form>

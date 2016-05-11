@@ -48,7 +48,7 @@ public class RegisterServlet extends HttpServlet{
 		 }
 		 else if(u.getMinAge()>u.getMaxAge())
 		 {
-			 req.setAttribute("msgs", "Minimum Age is greater than Maximum Age!");
+			 req.setAttribute("msgs", "Minimum age is greater than maximum age!");
 			 req.getRequestDispatcher("/register.jsp").forward(req, resp);
 		 }
 		 else if(u.getMinAge()<18)
@@ -63,6 +63,7 @@ public class RegisterServlet extends HttpServlet{
 		 }
 		 else
 		 {
+			 req.setAttribute("msgs", "");
 			 DateService ds = ServiceProvider.getDateService();
 			 if(ds.registerUserForm(u))
 			 {

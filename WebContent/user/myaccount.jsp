@@ -10,6 +10,7 @@
 	</head>
 	<body>
 		<%@ include file="/templates/navbar.jsp" %>
+		<%@ include file="/templates/policy.jsp" %>
 		<div id="accountdiv">
 			<div id="mainaccount">
 				<h1 class="header accountname"><span class="icon icon-user"></span>Account of ${loggedUser.name }</h1>
@@ -74,8 +75,8 @@
 							<c:if test="${not empty loggedUser.description }">
 								<p>${loggedUser.description }</p>
 							</c:if>
-					</div>
-				</div>	
+						</div>
+					</div>	
 				</div>
 			</div>
 		</div>

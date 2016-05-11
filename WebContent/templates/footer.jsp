@@ -4,7 +4,7 @@
 <footer>
  	<div class="flexwrapper">
 		<ul>
-			<li><a href="#">Privacy Policy</a></li>
+			<li><a id="policylink" href="#">Privacy Policy</a></li>
 			<li><a href="#">Frequently Asked Questions</a></li>
 			<li><a href="#">Support</a></li>
 			<li><a href="#">Terms</a></li>

@@ -15,6 +15,11 @@
     <servlet-class>controller.LogoutServlet</servlet-class>
   </servlet>
 
+  <servlet>
+    <servlet-name>UpdateServlet</servlet-name>
+    <servlet-class>controller.UpdateServlet</servlet-class>
+  </servlet>
+
   <servlet-mapping>
   	<servlet-name>LoginServlet</servlet-name>
   	<url-pattern>/LoginServlet.do</url-pattern>
@@ -30,8 +35,13 @@
     <url-pattern>/user/LogoutServlet.do</url-pattern>
   </servlet-mapping>
 
+  <servlet-mapping>
+    <servlet-name>UpdateServlet</servlet-name>
+    <url-pattern>/user/UpdateServlet.do</url-pattern>
+  </servlet-mapping>
+
   <listener>
   	<listener-class>utils.MyServletContextListener</listener-class>
   </listener>
-  
+
 </web-app>

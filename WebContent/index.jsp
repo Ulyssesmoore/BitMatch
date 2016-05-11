@@ -9,12 +9,15 @@
 		<%@ include file="/templates/imports.jsp" %>
 	</head>
 	<body id="home">
+		<%@ include file="/templates/policy.jsp" %>
 		<div class="bodydiv loginwrapper">
 			<div class="wrapper">
 				<h1 class="header">Login</h1>
 				<form action="/LoginServlet.do" method="post">
 					<div id="loginmessagebox">
-						${loginerror}
+						<c:if test="${not empty loginerror }">
+							<span class="icon icon-attention-circled"></span>${loginerror}
+						</c:if>
 					</div>
 					<p>Username: </p> 
 					<input id="usernamelogin" name="username" type="text" value="${cookie.cUsername.value }"/>

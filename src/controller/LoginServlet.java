@@ -34,6 +34,7 @@ public class LoginServlet extends HttpServlet {
 			req.getRequestDispatcher("/index.jsp").forward(req, resp);
 			return;
 		}
+		req.setAttribute("loginerror", "");
 		getServletContext().setAttribute("loggedUser", u);
 		resp.addCookie(new Cookie("cUsername", u.getUsername()));
 		req.getRequestDispatcher("/user/myaccount.jsp").forward(req, resp);
