@@ -35,13 +35,13 @@ public class UpdateServlet extends HttpServlet{
 		String gender =req.getParameter("editgender");
 		String sexuality = req.getParameter("editsexuality");
 		
-		System.out.println(name);
-		
 		String description = req.getParameter("editdescription");
 		String job = req.getParameter("editjob");
 		String hometown = req.getParameter("edithometown");
 		String country = req.getParameter("editcountry");
 		String hobby = req.getParameter("edithobby");
+		
+		System.out.println(description);
 		
 		int min = Integer.parseInt(minage);
 		int max = Integer.parseInt(maxage);

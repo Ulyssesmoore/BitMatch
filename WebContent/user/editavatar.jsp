@@ -16,7 +16,7 @@
 			<div class="wrapper">
 				<h1 class="header accountname"><span class="icon icon-pencil"></span>Edit your avatar</h1>
 				<form action="/user/ChangeAvatarServlet.do" method="post" enctype="multipart/form-data">
-					<input id="avatarpicker" type="file" />
+					<input id="avatarpicker" name="file" type="file" />
 					<input type="submit" value="Upload File"/>
 				</form>
 			</div>

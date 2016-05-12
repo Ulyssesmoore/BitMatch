@@ -30,8 +30,8 @@
 									<li>Age</li>
 									<li>Date of Birth</li>
 									<li>Sexuality</li>
-									<li>Minimum age of match</li>
-									<li>Maximum age of match<br/></li>
+									<li>Minimum age</li>
+									<li>Maximum age</li>
 									<c:if test="${not empty loggedUser.job}">
 										<li>Job</li>
 									</c:if>
@@ -53,8 +53,8 @@
 									<li>${loggedUser.age }</li>
 									<li>${loggedUser.birthDate }</li>
 									<li>${loggedUser.sexuality }</li>
-									<li>${loggedUser.minAge }<br/><br/></li>
-									<li>${loggedUser.maxAge }<br/><br/></li>
+									<li>${loggedUser.minAge }</li>
+									<li>${loggedUser.maxAge }</li>
 									<c:if test="${not empty loggedUser.job}">
 										<li>${loggedUser.job }</li>
 									</c:if>
@@ -78,7 +78,7 @@
 								<p>This user has no description yet</p>
 							</c:if>
 							<c:if test="${not empty loggedUser.description }">
-								<p>${loggedUser.description }</p>
+								<pre id="aboutme">${loggedUser.description }</pre>
 							</c:if>
 						</div>
 					</div>	

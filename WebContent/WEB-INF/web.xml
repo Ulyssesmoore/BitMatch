@@ -22,7 +22,7 @@
 
   <servlet>
     <servlet-name>ChangeAvatarServlet</servlet-name>
-    <servlet-class>controller.ChangeAvatarServlet</servletclass>
+    <servlet-class>controller.ChangeAvatarServlet</servlet-class>
   </servlet>
 
   <servlet-mapping>

@@ -80,4 +80,8 @@ $( document ).ready(function() {
 	$('#inlinepolicylink').click( function() {
 	      return false;
 	})
+	
+	$(function(){
+        $('#aboutme').html($('#aboutme').html().replace(/\n/g, '<br />'));
+    })
 });
