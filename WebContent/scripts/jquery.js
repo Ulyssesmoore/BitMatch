@@ -1,6 +1,11 @@
 $( document ).ready(function() {
 	$(function() {
-		$( "#datepicker" ).datepicker({ dateFormat: 'dd-mm-yyyy' }).val();
+		$( "#datepicker" ).datepicker({ 
+			dateFormat: 'dd-mm-yy',
+			changeMonth: true,
+			changeYear: true,
+			yearRange: "-100:+0"
+		}).val();
 	});
 	
 	$( "#datepicker" ).bind('keyup','keydown', function(e){
@@ -63,4 +68,16 @@ $( document ).ready(function() {
 	       return false;
 	     }
 	});
+	
+	$('#policylink').click( function() {
+	      return false;
+	})
+	
+	$('#readpolicy').click( function() {
+	      return false;
+	})
+	
+	$('#inlinepolicylink').click( function() {
+	      return false;
+	})
 });

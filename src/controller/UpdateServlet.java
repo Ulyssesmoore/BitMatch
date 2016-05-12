@@ -20,7 +20,7 @@ public class UpdateServlet extends HttpServlet{
 		super.init(config);
 	}
 	
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
 	{
 		req.setAttribute("editSexuality", req.getParameter("editsexuality"));
 		req.setAttribute("editGender", req.getParameter("editgender"));
@@ -101,10 +101,26 @@ public class UpdateServlet extends HttpServlet{
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bitmatch","root","");
 			System.out.println("Database Connected!");
-			PreparedStatement pstmt = conn.prepareStatement("UPDATE users SET name='"+name+"',userPassword='"+password+"',email='"+email+"',minimumage="+min+",maximumage="+max+",gender='"+gender+"',sexuality='"+sexuality+"' WHERE userID="+u.getUserID());
+			PreparedStatement pstmt = conn.prepareStatement("UPDATE users SET name=?,userPassword=?,email=?,minimumage=?,maximumage=?,gender=?,sexuality=? WHERE userID=?");
+			pstmt.setString(1, name);
+			pstmt.setString(2, password);
+			pstmt.setString(3, email);
+			pstmt.setInt(4, min);
+			pstmt.setInt(5, max);
+			pstmt.setString(6, gender);
+			pstmt.setString(7, sexuality);
+			pstmt.setInt(8, u.getUserID());
 			pstmt.executeUpdate();
-			PreparedStatement pstmt2 = conn.prepareStatement("UPDATE profile SET description='"+description+"',job='"+job+"',hobby='"+hobby+"',hometown='"+hometown+"',country='"+country+"' WHERE userID="+u.getUserID());
+			
+			PreparedStatement pstmt2 = conn.prepareStatement("UPDATE profile SET description=?,job=?,hobby=?,hometown=?,country=? WHERE userID=?");
+			pstmt2.setString(1, description);
+			pstmt2.setString(2, job);
+			pstmt2.setString(3, hobby);
+			pstmt2.setString(4, hometown);
+			pstmt2.setString(5, country);
+			pstmt2.setInt(6, u.getUserID());
 			pstmt2.executeUpdate();
+			
 			conn.close();
 		}
 		

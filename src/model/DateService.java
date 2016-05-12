@@ -73,7 +73,8 @@ public class DateService {
 		return user;
 	}
 	
-	public int userListSize(){
-		return allUsers.size();
+	public int lastUserID(){
+		User u=allUsers.get(allUsers.size()-2);
+		return u.getUserID();
 	}
 }

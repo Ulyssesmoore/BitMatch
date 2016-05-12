@@ -14,7 +14,7 @@
 			<%@ include file="/templates/policy.jsp" %>
 			<div class="wrapper register">
 				<h1 class="header">Register</h1>
-				<form action="/RegisterServlet.do" method="get">
+				<form action="/RegisterServlet.do" method="post">
 					<div id="messagebox">
 						<c:if test="${not empty msgs }">
 							<span class="icon icon-attention-circled"></span>${msgs }

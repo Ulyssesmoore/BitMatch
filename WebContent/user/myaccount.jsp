@@ -18,6 +18,7 @@
 				<div id="divider">
 					<div id="picwrapper">
 						<div id="profilepic" style="background-image:url('../resource/${loggedUser.username}.jpg'), url('../resource/standardimg.jpg');"></div>
+						<a id="editavatarlink" href="/user/editavatar.jsp"><span class="icon icon-pencil"></span>Edit Avatar</a>
 						<div id="userdata">
 							<div id="details">
 								<ul>

@@ -20,6 +20,11 @@
     <servlet-class>controller.UpdateServlet</servlet-class>
   </servlet>
 
+  <servlet>
+    <servlet-name>ChangeAvatarServlet</servlet-name>
+    <servlet-class>controller.ChangeAvatarServlet</servletclass>
+  </servlet>
+
   <servlet-mapping>
   	<servlet-name>LoginServlet</servlet-name>
   	<url-pattern>/LoginServlet.do</url-pattern>
@@ -38,6 +43,11 @@
   <servlet-mapping>
     <servlet-name>UpdateServlet</servlet-name>
     <url-pattern>/user/UpdateServlet.do</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>ChangeAvatarServlet</servlet-name>
+    <url-pattern>/user/ChangeAvatarServlet.do</url-pattern>
   </servlet-mapping>
 
   <listener>

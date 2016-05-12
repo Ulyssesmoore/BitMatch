@@ -16,7 +16,7 @@ import model.User;
 
 @SuppressWarnings("serial")
 public class RegisterServlet extends HttpServlet{
-	 protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
+	 protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
 	 {
 		 req.setAttribute("selectedSexuality", req.getParameter("sexuality"));
 		 req.setAttribute("selectedgender", req.getParameter("gender"));
@@ -84,7 +84,7 @@ public class RegisterServlet extends HttpServlet{
 				pstmt.setInt(8, u.getMaxAge());
 				pstmt.setString(9, u.getPassword());
 				pstmt.executeUpdate();
-				u.setUserID(ds.userListSize());
+				u.setUserID(ds.lastUserID()+1);
 				PreparedStatement pstmt2 = conn.prepareStatement("INSERT INTO profile(userID, description, job, hobby, country, hometown, smoker) VALUE(?,?,?,?,?,?,?)");
 				pstmt2.setInt(1, u.getUserID());
 				pstmt2.setString(2, "");

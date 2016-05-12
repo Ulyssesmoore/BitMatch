@@ -13,7 +13,7 @@
 		<%@ include file="/templates/policy.jsp" %>
 		<div id="profilediv">
 			<div id="editaccount">
-				<form action="/user/UpdateServlet.do" method="get">
+				<form action="/user/UpdateServlet.do" method="post">
 					<h1 class="header accountname"><span class="icon icon-cog"></span>Edit your account</h1>
 					<div id="editmessagebox">
 						<c:if test="${not empty editerror }">
