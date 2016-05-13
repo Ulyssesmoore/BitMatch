@@ -24,11 +24,9 @@ public class ChangeAvatarServlet  extends HttpServlet{
 		User u = (User)getServletContext().getAttribute("loggedUser");
 		String username=u.getUsername();
 		
-		String description = req.getParameter("description"); // Retrieves <input type="text" name="description">
 	    Part filePart = req.getPart("file"); // Retrieves <input type="file" name="file">
 	    
-	    String path = getServletContext().getRealPath("resource/");
-	    System.out.println(path);
+	    String path = ("C:/Users/Ulysses Moore/Documents/Blok D 2016/IPASS/BitMatch/BitMatch/WebContent/resource/");
 	    File uploads = new File(path + username +".jpg");
 	    
 	    try(InputStream fileContent = filePart.getInputStream())

@@ -16,7 +16,16 @@
 			<div class="wrapper">
 				<h1 class="header accountname"><span class="icon icon-pencil"></span>Edit your avatar</h1>
 				<form action="/user/ChangeAvatarServlet.do" method="post" enctype="multipart/form-data">
-					<input id="avatarpicker" name="file" type="file" />
+					<div id=avatardiv>
+						<div id="avatarname">
+							<input id="uploadFile" placeholder=" Choose File" disabled="disabled" />
+						</div>
+						<div class="fileUpload btn btn-primary">
+						    <span>Browse</span>
+						    <input id="uploadBtn" name="file" type="file" class="upload" />
+						</div>
+					</div>
+					<p>Only upload image files with max size 500x500. Please don't upload any inappropriate photo's.</p>
 					<input type="submit" value="Upload File"/>
 				</form>
 			</div>
