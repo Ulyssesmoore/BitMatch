@@ -81,4 +81,17 @@ public class DateService {
 	public ArrayList<User> getAllUsers(){
 		return allUsers;
 	}
+	
+	public User getUserByName(String username)
+	{
+		User u = null;
+		for(User user:allUsers)
+		{
+			if(user.getUsername().equals(username))
+			{
+				u=user;
+			}
+		}
+		return u;
+	}
 }

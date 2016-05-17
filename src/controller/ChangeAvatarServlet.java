@@ -19,7 +19,7 @@ import model.User;
 @MultipartConfig
 public class ChangeAvatarServlet  extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
-	 {
+	{
 		
 		User u = (User)getServletContext().getAttribute("loggedUser");
 		String username=u.getUsername();
@@ -27,7 +27,6 @@ public class ChangeAvatarServlet  extends HttpServlet{
 	    Part filePart = req.getPart("file"); // Retrieves <input type="file" name="file">
 	    
 	    String path = (getServletContext().getRealPath("/resource/"));
-	    System.out.println(path);
 	    File uploads = new File(path+ "../../userresource/" + username +".jpg");
 	    
 	    try(InputStream fileContent = filePart.getInputStream())

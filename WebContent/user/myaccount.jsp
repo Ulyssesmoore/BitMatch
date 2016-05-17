@@ -23,7 +23,7 @@
 							<div id="details">
 								<ul>
 									<li>Name</li>
-									<c:if test="${fn:length(loggedUser.name)>15}">
+									<c:if test="${fn:length(loggedUser.name)>20}">
 										<br>
 									</c:if>
 									<li>Gender</li>

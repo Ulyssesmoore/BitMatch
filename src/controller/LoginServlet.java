@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
@@ -14,6 +15,13 @@ import model.User;
 
 @SuppressWarnings("serial")
 public class LoginServlet extends HttpServlet {
+	public void init(ServletConfig config) throws ServletException
+	{
+		super.init(config);
+		DateService ds = ServiceProvider.getDateService();
+		getServletContext().setAttribute("userlist", ds.getAllUsers());
+	}
+	
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
 	{
 		String username = req.getParameter("username");
