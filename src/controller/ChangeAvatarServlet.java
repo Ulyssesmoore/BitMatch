@@ -26,8 +26,9 @@ public class ChangeAvatarServlet  extends HttpServlet{
 		
 	    Part filePart = req.getPart("file"); // Retrieves <input type="file" name="file">
 	    
-	    String path = ("C:/Users/Ulysses Moore/Documents/Blok D 2016/IPASS/BitMatch/BitMatch/WebContent/resource/");
-	    File uploads = new File(path + username +".jpg");
+	    String path = (getServletContext().getRealPath("/resource/"));
+	    System.out.println(path);
+	    File uploads = new File(path+ "../../userresource/" + username +".jpg");
 	    
 	    try(InputStream fileContent = filePart.getInputStream())
 	    {

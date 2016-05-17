@@ -13,7 +13,7 @@
 		<%@ include file="/templates/navbar.jsp" %>
 		<%@ include file="/templates/policy.jsp" %>
 		<div id="editavatardiv">
-			<div class="wrapper">
+			<div class="wrapper avatar">
 				<h1 class="header accountname"><span class="icon icon-pencil"></span>Edit your avatar</h1>
 				<form action="/user/ChangeAvatarServlet.do" method="post" enctype="multipart/form-data">
 					<div id=avatardiv>

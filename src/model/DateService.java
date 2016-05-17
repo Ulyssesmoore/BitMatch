@@ -77,4 +77,8 @@ public class DateService {
 		User u=allUsers.get(allUsers.size()-2);
 		return u.getUserID();
 	}
+	
+	public ArrayList<User> getAllUsers(){
+		return allUsers;
+	}
 }
