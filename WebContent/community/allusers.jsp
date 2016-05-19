@@ -20,14 +20,14 @@
 						<a href="/community/allusers.jsp?start=0">&lt; First</a>
 						<a href="/community/allusers.jsp?start=${param.start-1}">&lt;</a>
 					</c:if>
-					<c:forEach var="page" begin="${param.start}" end="${userlist.size() div 6 }">
+					<c:forEach var="page" begin="${param.start}" end="${fn:replace(((userlist.size()/6)-(userlist.size()/6)%1),'.0','') }">
 						<c:if test="${page < param.start+3 }">
 							<a href="/community/allusers.jsp?start=${page}">${page+1}</a>
 						</c:if>
 					</c:forEach>
-					<c:if test="${param.start+3 < userlist.size() div 6}">
+					<c:if test="${param.start+3 < userlist.size() div 3}">
 						<a href="/community/allusers.jsp?start=${param.start+1}">&gt;</a>
-						<a href="/community/allusers.jsp?start=${userlist.size() div 6 }">&gt; Last</a>
+						<a href="/community/allusers.jsp?start=${fn:replace(((userlist.size()/6)-(userlist.size()/6)%1),'.0','')}">&gt; Last</a>
 					</c:if>
 				</div>
 				<div id="users">
