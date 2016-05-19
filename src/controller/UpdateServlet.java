@@ -41,8 +41,6 @@ public class UpdateServlet extends HttpServlet{
 		String country = req.getParameter("editcountry");
 		String hobby = req.getParameter("edithobby");
 		
-		System.out.println(description);
-		
 		int min = Integer.parseInt(minage);
 		int max = Integer.parseInt(maxage);
 		if(name.equals(""))

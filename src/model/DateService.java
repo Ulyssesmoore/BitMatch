@@ -32,7 +32,6 @@ public class DateService {
 			if(u.getUserID()==id)
 			{
 				u.setDescription(desc);
-				System.out.println(u.getName());
 				u.setJob(job);
 				u.setHobby(hobby);
 				u.setCountry(country);
