@@ -18,8 +18,6 @@ public class LoginServlet extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException
 	{
 		super.init(config);
-		DateService ds = ServiceProvider.getDateService();
-		getServletContext().setAttribute("userlist", ds.getAllUsers());
 	}
 	
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
@@ -46,5 +44,6 @@ public class LoginServlet extends HttpServlet {
 		getServletContext().setAttribute("loggedUser", u);
 		resp.addCookie(new Cookie("cUsername", u.getUsername()));
 		req.getRequestDispatcher("/user/myaccount.jsp").forward(req, resp);
+		getServletContext().setAttribute("userlist", ds.getAllUsers());
 	}
 }

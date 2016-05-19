@@ -112,6 +112,14 @@ public class UpdateServlet extends HttpServlet{
 			pstmt.setInt(8, u.getUserID());
 			pstmt.executeUpdate();
 			
+			u.setName(name);
+			u.setPassword(password);
+			u.setEmail(email);
+			u.setMinAge(min);
+			u.setMaxAge(max);
+			u.setGender(gender);
+			u.setSexuality(sexuality);
+			
 			PreparedStatement pstmt2 = conn.prepareStatement("UPDATE profile SET description=?,job=?,hobby=?,hometown=?,country=? WHERE userID=?");
 			pstmt2.setString(1, description);
 			pstmt2.setString(2, job);
@@ -120,6 +128,12 @@ public class UpdateServlet extends HttpServlet{
 			pstmt2.setString(5, country);
 			pstmt2.setInt(6, u.getUserID());
 			pstmt2.executeUpdate();
+			
+			u.setDescription(description);
+			u.setJob(job);
+			u.setHobby(hobby);
+			u.setHometown(hometown);
+			u.setCountry(country);
 			
 			conn.close();
 		}

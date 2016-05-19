@@ -16,7 +16,7 @@ import model.User;
 
 @SuppressWarnings("serial")
 public class RegisterServlet extends HttpServlet{
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, NumberFormatException
 	{
 		req.setAttribute("selectedSexuality", req.getParameter("sexuality"));
 		req.setAttribute("selectedgender", req.getParameter("gender"));
@@ -95,6 +95,10 @@ public class RegisterServlet extends HttpServlet{
 				pstmt2.setInt(7, 0);
 				pstmt2.executeUpdate();
 				conn.close();
+			 }
+			 catch(NumberFormatException nfe)
+			 {
+				 
 			 }
 			 catch(Exception e)
 			 {

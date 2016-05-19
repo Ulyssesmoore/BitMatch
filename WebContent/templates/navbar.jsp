@@ -28,5 +28,16 @@
 				</form>
 			</li>
 		</c:if>
+		<c:if test="${loggedUser!=null}">
+			<a href="/user/myaccount.jsp">
+				<div id="loggedin">
+					<div id="navbarpic" style="background-image:url('../userresource/${loggedUser.username}.jpg'), url('../resource/standardimg.jpg');"></div>
+					<div id="loggedindetails">
+						<p>Currently logged in:</p>
+						<p>${loggedUser.name }</p>
+					</div>
+				</div>
+			</a>
+		</c:if>
 	</ul>
 </nav>
