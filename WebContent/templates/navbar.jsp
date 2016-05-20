@@ -18,7 +18,7 @@
 			<li>
 				<a href="#">Users</a>
 				<ul>
-					<li><a href="/community/allusers.jsp">Browse Users</a></li>
+					<li><a href="/community/allusers.jsp?start=0&filter=6">Browse Users</a></li>
 					<li><a href="#">Find Match</a></li>
 				</ul>
 			</li>

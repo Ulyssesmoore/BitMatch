@@ -84,4 +84,8 @@ $( document ).ready(function() {
 	$(function(){
         $('#aboutme').html($('#aboutme').html().replace(/\n/g, '<br />'));
     })
+    
+    $("#amounts").change(function(){
+    	window.location.replace("/community/allusers.jsp?start=0&filter="+this.value);
+    })
 });

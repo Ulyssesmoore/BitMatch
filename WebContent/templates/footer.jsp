@@ -17,7 +17,7 @@
 			<li><a href="/register.jsp">Register</a></li>
 			<c:if test="${loggedUser.username != null }" >
 				<li><a href="/user/myaccount.jsp">My Account</a></li>
-				<li><a href="/community/allusers.jsp">Browse Users</a></li>
+				<li><a href="/community/allusers.jsp?start=0&filter=6">Browse Users</a></li>
 				<li>
 					<form action="/user/LogoutServlet.do" method="get">
 						<a href="/user/LogoutServlet.do">Logout</a>

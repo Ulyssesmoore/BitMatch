@@ -12,28 +12,33 @@
 	<body>
 		<%@ include file="/templates/navbar.jsp" %>
 		<%@ include file="/templates/policy.jsp" %>
-		<div>
+		<div id="minimum">
 			<div class="wrapper" id="alluserdiv">
 				<h1 class="header accountname"><span class="icon icon-users"></span>Browse Users</h1>
 				<div id="pages">
 					<c:if test="${not empty param.start and param.start!=0}">
-						<a href="/community/allusers.jsp?start=0">&lt; First</a>
-						<a href="/community/allusers.jsp?start=${param.start-1}">&lt;</a>
+						<a href="/community/allusers.jsp?start=0&filter=${param.filter}">&lt; First</a>
+						<a href="/community/allusers.jsp?start=${param.start-1}&filter=${param.filter}">&lt;</a>
 					</c:if>
-					<c:forEach var="page" begin="${param.start}" end="${fn:replace(((userlist.size()/6)-(userlist.size()/6)%1),'.0','') }">
+					<c:forEach var="page" begin="${param.start}" end="${fn:replace(((userlist.size()/param.filter)-(userlist.size()/param.filter)%1),'.0','') }">
 						<c:if test="${page < param.start+3 }">
-							<a href="/community/allusers.jsp?start=${page}">${page+1}</a>
+							<c:if test="${param.start==page }">
+								<a id="selectedpage" href="/community/allusers.jsp?start=${page}&filter=${param.filter}">${page+1}</a>
+							</c:if>
+							<c:if test="${param.start!=page }">
+								<a href="/community/allusers.jsp?start=${page}&filter=${param.filter}">${page+1}</a>
+							</c:if>
 						</c:if>
 					</c:forEach>
-					<c:if test="${param.start+3 < userlist.size() div 3}">
-						<a href="/community/allusers.jsp?start=${param.start+1}">&gt;</a>
-						<a href="/community/allusers.jsp?start=${fn:replace(((userlist.size()/6)-(userlist.size()/6)%1),'.0','')}">&gt; Last</a>
+					<c:if test="${param.start+2 < fn:replace(((userlist.size()/param.filter)-(userlist.size()/param.filter)%1),'.0','')}">
+						<a href="/community/allusers.jsp?start=${param.start+1}&filter=${param.filter}">&gt;</a>
+						<a href="/community/allusers.jsp?start=${fn:replace(((userlist.size()/param.filter)-(userlist.size()/param.filter)%1),'.0','')}&filter=${param.filter}">&gt; Last</a>
 					</c:if>
 				</div>
 				<div id="users">
-					<c:forEach items="${userlist}" var="user" begin="${param.start*6}" end="${param.start*6+5}">
+					<c:forEach items="${userlist}" var="user" begin="${param.start*param.filter}" end="${param.start*param.filter+(param.filter-1)}">
 						<c:if test="${user.username.equals(loggedUser.username) }">
-							<a href="/user/myaccount.jsp">
+							<a href="/user/myaccount.jsp?filter=${param.filter }">
 						</c:if>
 						<c:if test="${!user.username.equals(loggedUser.username) }">
 							<a href="/community/GetUserServlet.do?userpage=${user.username}">
@@ -57,6 +62,18 @@
 						</a>
 					</c:forEach>
 				</div>
+			</div>
+			<div id="pagefilter">
+				<p>Results per page:</p>
+				<select id="amounts">
+					<option>6</option>
+					<option>12</option>
+					<option>24</option>
+					<option>48</option>
+					<c:forEach items="${param.filter}" var="item">
+						<option class="invisible" value="${item}"${(param.filter == item) ? " selected='selected'" : "" }>${item}</option>
+					</c:forEach>
+				</select>
 			</div>
 		</div>
 		<%@ include file="/templates/footer.jsp" %>
