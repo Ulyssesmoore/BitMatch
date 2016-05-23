@@ -12,33 +12,35 @@
 	<body>
 		<%@ include file="/templates/navbar.jsp" %>
 		<%@ include file="/templates/policy.jsp" %>
+		<c:set var="offset" scope="request" value="${empty param.start? 0: param.start}"/>
+		<c:set var="amount" scope="request" value="${empty param.filter? 6: param.filter}"/>
 		<div id="minimum">
 			<div class="wrapper" id="alluserdiv">
 				<h1 class="header accountname"><span class="icon icon-users"></span>Browse Users</h1>
 				<div id="pages">
-					<c:if test="${not empty param.start and param.start!=0}">
-						<a href="/community/allusers.jsp?start=0&filter=${param.filter}">&lt; First</a>
-						<a href="/community/allusers.jsp?start=${param.start-1}&filter=${param.filter}">&lt;</a>
+					<c:if test="${offset!=0}">
+						<a href="/community/allusers.jsp?start=0&filter=${amount}">&lt; First</a>
+						<a href="/community/allusers.jsp?start=${offset-1}&filter=${amount}">&lt;</a>
 					</c:if>
-					<c:forEach var="page" begin="${param.start}" end="${fn:replace(((userlist.size()/param.filter)-(userlist.size()/param.filter)%1),'.0','') }">
-						<c:if test="${page < param.start+3 }">
-							<c:if test="${param.start==page }">
-								<a id="selectedpage" href="/community/allusers.jsp?start=${page}&filter=${param.filter}">${page+1}</a>
+					<c:forEach var="page" begin="${offset}" end="${fn:replace(((userlist.size()/amount)-(userlist.size()/amount)%1),'.0','') }">
+						<c:if test="${page < offset+3 }">
+							<c:if test="${offset==page }">
+								<a id="selectedpage" href="/community/allusers.jsp?start=${page}&filter=${amount}">${page+1}</a>
 							</c:if>
-							<c:if test="${param.start!=page }">
-								<a href="/community/allusers.jsp?start=${page}&filter=${param.filter}">${page+1}</a>
+							<c:if test="${offset!=page }">
+								<a href="/community/allusers.jsp?start=${page}&filter=${amount}">${page+1}</a>
 							</c:if>
 						</c:if>
 					</c:forEach>
-					<c:if test="${param.start+2 < fn:replace(((userlist.size()/param.filter)-(userlist.size()/param.filter)%1),'.0','')}">
-						<a href="/community/allusers.jsp?start=${param.start+1}&filter=${param.filter}">&gt;</a>
-						<a href="/community/allusers.jsp?start=${fn:replace(((userlist.size()/param.filter)-(userlist.size()/param.filter)%1),'.0','')}&filter=${param.filter}">&gt; Last</a>
+					<c:if test="${offset+2 < fn:replace(((userlist.size()/amount)-(userlist.size()/amount)%1),'.0','')}">
+						<a href="/community/allusers.jsp?start=${offset+1}&filter=${amount}">&gt;</a>
+						<a href="/community/allusers.jsp?start=${fn:replace(((userlist.size()/amount)-(userlist.size()/amount)%1),'.0','')}&filter=${amount}">&gt; Last</a>
 					</c:if>
 				</div>
 				<div id="users">
-					<c:forEach items="${userlist}" var="user" begin="${param.start*param.filter}" end="${param.start*param.filter+(param.filter-1)}">
+					<c:forEach items="${userlist}" var="user" begin="${offset*amount}" end="${offset*amount+(amount-1)}">
 						<c:if test="${user.username.equals(loggedUser.username) }">
-							<a href="/user/myaccount.jsp?filter=${param.filter }">
+							<a href="/user/myaccount.jsp?filter=${amount }">
 						</c:if>
 						<c:if test="${!user.username.equals(loggedUser.username) }">
 							<a href="/community/GetUserServlet.do?userpage=${user.username}">

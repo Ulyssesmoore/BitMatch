@@ -4,9 +4,9 @@
 <footer>
  	<div class="flexwrapper">
 		<ul>
-			<li><a id="policylink" href="#">Privacy Policy</a></li>
-			<li><a href="#">Frequently Asked Questions</a></li>
-			<li><a href="#">Support</a></li>
+			<li><a id="policylink" href="/about/ourpolicy.jsp">Privacy Policy</a></li>
+			<li><a href="/about/faq.jsp">Frequently Asked Questions</a></li>
+			<li><a href="/about/support.jsp">Support</a></li>
 			<li><a href="#">Terms</a></li>
 			<li><a href="#">About</a></li>
 		</ul>

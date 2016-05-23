@@ -22,6 +22,16 @@
 					<li><a href="#">Find Match</a></li>
 				</ul>
 			</li>
+		</c:if>
+		<li>
+			<a href="#">About Us</a>
+			<ul>
+				<li><a href="/about/ourpolicy.jsp">Data Policy</a></li>
+				<li><a href="/about/faq.jsp">FAQ</a></li>
+				<li><a href="/about/support.jsp">Support</a></li>
+			</ul>
+		</li>
+		<c:if test="${loggedUser.username != null }" >
 			<li>
 				<form action="/user/LogoutServlet.do" method="get">
 					<a href="/user/LogoutServlet.do">Logout</a>
