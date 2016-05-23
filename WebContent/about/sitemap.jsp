@@ -6,20 +6,16 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>BitMatch | Support</title>
+		<title>BitMatch | Sitemap</title>
 		<%@ include file="/templates/imports.jsp" %>
 	</head>
 	<body>
 		<%@ include file="/templates/navbar.jsp" %>
 		<%@ include file="/templates/policy.jsp" %>
 		<div id="editavatardiv">
-			<div class="wrapper avatar">
-				<h1 class="header accountname">Support</h1>
-				<p>Welcome to our support page.</p>
-				<p>If you have a problem you need our help with, send us a message using the button below and we will try and help you as fast as we can. This is our BitMatch guarantee.</p>
-				<div id="centerlink">				
-					<a id="supportlink" href="maito:support@bitmatch.com">Ask Support</a>
-				</div>
+			<div class="wrapper avatar" id="sitemap">
+				<h1 class="header accountname">Sitemap</h1>
+				<img id="mapimage" src="/resource/Sitemap_BitMatch.jpg" alt="Sitemap BitMatch"></img>
 			</div>
 		</div>
 		<%@ include file="/templates/footer.jsp" %>

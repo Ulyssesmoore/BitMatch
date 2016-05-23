@@ -30,6 +30,21 @@
 	 }
 	 catch(err){};
 	 
-	
-	 
+	 try{
+		 var d = document.getElementById("deletelink");
+		 d.onclick = function() {
+			 document.getElementById('deletion').style.visibility="visible";
+			 document.getElementById('deletion').style.opacity="1";
+			 document.getElementById('deletion').style.transitionDelay="0s";
+		 }
+	 }
+	catch(err){};
+	 try{
+		 var e = document.getElementById("dontdelete");
+		 e.onclick = function() {
+			 document.getElementById('deletion').style.visibility="hidden";
+			 document.getElementById('deletion').style.opacity="0";
+		 }
+	 }
+	 catch(err){};
  }

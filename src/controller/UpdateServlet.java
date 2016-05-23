@@ -1,9 +1,6 @@
 package controller;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -11,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.DateService;
+import model.ServiceProvider;
 import model.User;
 
 @SuppressWarnings("serial")
@@ -22,6 +21,7 @@ public class UpdateServlet extends HttpServlet{
 	
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
 	{
+		DateService ds = ServiceProvider.getDateService();
 		req.setAttribute("editSexuality", req.getParameter("editsexuality"));
 		req.setAttribute("editGender", req.getParameter("editgender"));
 		User u = (User)getServletContext().getAttribute("loggedUser");
@@ -43,6 +43,7 @@ public class UpdateServlet extends HttpServlet{
 		
 		int min = Integer.parseInt(minage);
 		int max = Integer.parseInt(maxage);
+		
 		if(name.equals(""))
 		{
 			req.setAttribute("editerror", "Name field is empty!");
@@ -93,23 +94,7 @@ public class UpdateServlet extends HttpServlet{
 			req.setAttribute("editerror", "Maximum age not allowed. Must be higher than 17");
 			req.getRequestDispatcher("/user/editaccount.jsp").forward(req, resp);
 		}
-		
-		try
-		{
-			Class.forName("com.mysql.jdbc.Driver").newInstance();
-			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bitmatch","root","");
-			System.out.println("Database Connected!");
-			PreparedStatement pstmt = conn.prepareStatement("UPDATE users SET name=?,userPassword=?,email=?,minimumage=?,maximumage=?,gender=?,sexuality=? WHERE userID=?");
-			pstmt.setString(1, name);
-			pstmt.setString(2, password);
-			pstmt.setString(3, email);
-			pstmt.setInt(4, min);
-			pstmt.setInt(5, max);
-			pstmt.setString(6, gender);
-			pstmt.setString(7, sexuality);
-			pstmt.setInt(8, u.getUserID());
-			pstmt.executeUpdate();
-			
+		else{
 			u.setName(name);
 			u.setPassword(password);
 			u.setEmail(email);
@@ -118,28 +103,15 @@ public class UpdateServlet extends HttpServlet{
 			u.setGender(gender);
 			u.setSexuality(sexuality);
 			
-			PreparedStatement pstmt2 = conn.prepareStatement("UPDATE profile SET description=?,job=?,hobby=?,hometown=?,country=? WHERE userID=?");
-			pstmt2.setString(1, description);
-			pstmt2.setString(2, job);
-			pstmt2.setString(3, hobby);
-			pstmt2.setString(4, hometown);
-			pstmt2.setString(5, country);
-			pstmt2.setInt(6, u.getUserID());
-			pstmt2.executeUpdate();
-			
 			u.setDescription(description);
 			u.setJob(job);
 			u.setHobby(hobby);
 			u.setHometown(hometown);
 			u.setCountry(country);
 			
-			conn.close();
+			ds.updateUser(u);
+			
+			req.getRequestDispatcher("/user/myaccount.jsp").forward(req, resp);
 		}
-		
-		catch(Exception e)
-		{
-			e.printStackTrace();
-		}
-		req.getRequestDispatcher("/user/myaccount.jsp").forward(req, resp);
 	}
 }

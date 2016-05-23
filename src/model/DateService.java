@@ -1,46 +1,13 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+
+import persistance.DateDAO;
 
 public class DateService {
 	private ArrayList<User> allUsers = new ArrayList<>();
-	
-	public boolean registerUser(int id, String unm, String pw, String em, String nm, String gd, String bd, String pref, int mina, int maxa)
-	{
-		boolean b = true;
-		User us = new User(unm, nm, gd, em, bd, pw, pref, mina, maxa);
-		us.setUserID(id);
-		for (User u:allUsers)
-		{
-			if(us.equals(u))
-			{
-				b=false;
-			}
-		}
-		if(b)
-		{
-			allUsers.add(us);
-		}
-		return b;
-	}
-	
-	public boolean setProfile(int id, String desc, String job, String hobby, String country, String hometown, boolean smoker)
-	{
-		boolean b=false;
-		for (User u:allUsers)
-		{
-			if(u.getUserID()==id)
-			{
-				u.setDescription(desc);
-				u.setJob(job);
-				u.setHobby(hobby);
-				u.setCountry(country);
-				u.setHometown(hometown);
-				u.setSmoker(smoker);
-			}
-		}
-		return b;
-	}
+	private DateDAO ddao = new DateDAO();
 	
 	public boolean registerUserForm(User us)
 	{
@@ -59,6 +26,22 @@ public class DateService {
 		return b;
 	}
 	
+	public boolean deleteUserForm(User us)
+	{
+		boolean b = true;
+		Iterator<User> iter = allUsers.iterator();
+
+		while (iter.hasNext()) {
+		    User u = iter.next();
+
+		    if (us.getUserID()==u.getUserID())
+		        iter.remove();
+		}
+		System.out.println(allUsers.size());
+		
+		return b;
+	}
+	
 	public User loginUser(String uNm, String pw)
 	{
 		User user = null;
@@ -73,7 +56,7 @@ public class DateService {
 	}
 	
 	public int lastUserID(){
-		User u=allUsers.get(allUsers.size()-2);
+		User u = allUsers.get(allUsers.size()-2);
 		return u.getUserID();
 	}
 	
@@ -92,5 +75,27 @@ public class DateService {
 			}
 		}
 		return u;
+	}
+	public void createUser(User u)
+	{
+		ddao.create(u);
+		registerUserForm(u);
+		u.setUserID(lastUserID()+1);
+	}
+	
+	public void readAll()
+	{
+		allUsers = (ArrayList<User>) ddao.read();
+	}
+	
+	public void updateUser(User u)
+	{
+		ddao.update(u);
+	}
+	
+	public void deleteUser(User u)
+	{
+		ddao.delete(u);
+		deleteUserForm(u);
 	}
 }

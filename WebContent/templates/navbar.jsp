@@ -5,20 +5,21 @@
 	<ul>
 		<c:if test="${loggedUser.username == null }" >
 			<li><a href="/index.jsp">Login</a></li>
+			<li><a href="/register.jsp">Register</a></li>
 		</c:if>
-		<li><a href="/register.jsp">Register</a></li>
 		<c:if test="${loggedUser.username != null }" >
 			<li>
 				<a href="/user/myaccount.jsp">My Account</a>
 				<ul>
 					<li><a href="/user/myaccount.jsp">View Profile</a></li>
 					<li><a href="/user/editaccount.jsp">Edit Profile</a></li>
+					<li><a href="/user/deleteaccount.jsp">Delete Profile</a></li>
 				</ul>
 			</li>
 			<li>
 				<a href="#">Users</a>
 				<ul>
-					<li><a href="/community/allusers.jsp?start=0&filter=6">Browse Users</a></li>
+					<li><a href="/community/allusers.jsp">Browse Users</a></li>
 					<li><a href="#">Find Match</a></li>
 				</ul>
 			</li>
@@ -27,8 +28,10 @@
 			<a href="#">About Us</a>
 			<ul>
 				<li><a href="/about/ourpolicy.jsp">Data Policy</a></li>
+				<li><a href="/about/terms.jsp">Terms of Service</a></li>
 				<li><a href="/about/faq.jsp">FAQ</a></li>
 				<li><a href="/about/support.jsp">Support</a></li>
+				<li><a href="/about/sitemap.jsp">Sitemap</a></li>
 			</ul>
 		</li>
 		<c:if test="${loggedUser.username != null }" >

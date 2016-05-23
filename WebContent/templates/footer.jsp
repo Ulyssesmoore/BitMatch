@@ -7,17 +7,17 @@
 			<li><a id="policylink" href="/about/ourpolicy.jsp">Privacy Policy</a></li>
 			<li><a href="/about/faq.jsp">Frequently Asked Questions</a></li>
 			<li><a href="/about/support.jsp">Support</a></li>
-			<li><a href="#">Terms</a></li>
-			<li><a href="#">About</a></li>
+			<li><a href="/about/terms.jsp">Terms</a></li>
+			<li><a href="/about/sitemap.jsp">About</a></li>
 		</ul>
 		<ul>
 			<c:if test="${loggedUser.username == null }" >
 				<li><a href="/index.jsp">Login</a></li>
+				<li><a href="/register.jsp">Register</a></li>
 			</c:if>
-			<li><a href="/register.jsp">Register</a></li>
 			<c:if test="${loggedUser.username != null }" >
 				<li><a href="/user/myaccount.jsp">My Account</a></li>
-				<li><a href="/community/allusers.jsp?start=0&filter=6">Browse Users</a></li>
+				<li><a href="/community/allusers.jsp">Browse Users</a></li>
 				<li>
 					<form action="/user/LogoutServlet.do" method="get">
 						<a href="/user/LogoutServlet.do">Logout</a>
