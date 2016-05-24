@@ -24,7 +24,7 @@
 					</form>
 				</li>
 			</c:if>	
-			<li><a href="#">Sitemap</a></li>
+			<li><a href="/about/sitemap.jsp">Sitemap</a></li>
 		</ul>
 	</div>
 	<div id="copyright">
