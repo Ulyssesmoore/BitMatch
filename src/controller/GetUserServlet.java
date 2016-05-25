@@ -16,6 +16,11 @@ public class GetUserServlet extends HttpServlet {
 	{
 		String requestedUser=req.getParameter("userpage");
 		DateService ds = ServiceProvider.getDateService();
+		if(ds.getUserByName(requestedUser)==null)
+		{
+			req.getRequestDispatcher("/community/allusers.jsp").forward(req, resp);
+			return;
+		}
 		req.setAttribute("requesteduser", ds.getUserByName(requestedUser));
 		req.getRequestDispatcher("/community/requestedaccount.jsp").forward(req, resp);
 	}

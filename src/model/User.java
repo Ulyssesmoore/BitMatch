@@ -3,6 +3,7 @@ package model;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 public class User {
@@ -68,26 +69,26 @@ public class User {
 		return b;
 	}
 	
-	@SuppressWarnings("deprecation")
 	public boolean checkBirthdate(String bd)
 	{
 		boolean b=false;
 		DateFormat formatter; 
-		Date date = new Date(); 
-		Date currentDate = new Date();
-		formatter = new SimpleDateFormat("dd-mm-yyyy");
+		Calendar date = Calendar.getInstance();
+		Calendar currentDate = Calendar.getInstance();
+		formatter = new SimpleDateFormat("dd-MM-yyyy");
 		try{
-			date = formatter.parse(bd);
+			date.setTime(formatter.parse(birthDate));
 		}
 		catch(ParseException pe){};
-		int difference = currentDate.getYear() - date.getYear();
-		if(date.getMonth()>currentDate.getMonth()||(date.getMonth()==currentDate.getMonth()&&date.getDay()>currentDate.getDay()))
+		int difference = currentDate.get(Calendar.YEAR) - date.get(Calendar.YEAR);
+		if(currentDate.get(Calendar.MONTH)<date.get(Calendar.MONTH)||(currentDate.get(Calendar.MONTH)==date.get(Calendar.MONTH)&&currentDate.get(Calendar.DAY_OF_MONTH)<date.get(Calendar.DAY_OF_MONTH)))
 		{
 			difference--;
 		}
-		if(difference>17 && date.getYear()<=currentDate.getYear()&&bd.matches(dateRegex))
+
+		if(difference>17)
 		{
-			b=true;
+			b = true;
 		}
 		return b;
 	}
@@ -173,22 +174,23 @@ public class User {
 		return age;
 	}
 	
-	@SuppressWarnings("deprecation")
 	public int getMyAge() {
 		DateFormat formatter; 
-		Date date = new Date(); 
-		Date currentDate = new Date();
-		formatter = new SimpleDateFormat("dd-mm-yyyy");
+		Calendar date = Calendar.getInstance();
+		Calendar currentDate = Calendar.getInstance();
+		formatter = new SimpleDateFormat("dd-MM-yyyy");
 		try{
-			date = formatter.parse(birthDate);
+			date.setTime(formatter.parse(birthDate));
 		}
 		catch(ParseException pe){};
 		
-		int difference = currentDate.getYear() - date.getYear();
-		if(date.getMonth()>currentDate.getMonth()||(date.getMonth()==currentDate.getMonth()&&date.getDay()>currentDate.getDay()))
+		int difference = currentDate.get(Calendar.YEAR) - date.get(Calendar.YEAR);
+		System.out.println(difference);
+		if(currentDate.get(Calendar.MONTH)<date.get(Calendar.MONTH)||(currentDate.get(Calendar.MONTH)==date.get(Calendar.MONTH)&&currentDate.get(Calendar.DAY_OF_MONTH)<date.get(Calendar.DAY_OF_MONTH)))
 		{
 			difference--;
 		}
+		System.out.println(difference);
 		return difference;
 	}
 
