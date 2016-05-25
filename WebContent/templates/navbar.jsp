@@ -17,10 +17,14 @@
 				</ul>
 			</li>
 			<li>
-				<a href="#">Users</a>
+				<a href="/community/allusers.jsp">Users</a>
 				<ul>
 					<li><a href="/community/allusers.jsp">Browse Users</a></li>
-					<li><a href="#">Find Match</a></li>
+					<li>
+						<form action="/community/MatchMakerServlet.do" method="get">
+							<a href="/community/MatchMakerServlet.do">Find Match</a>
+						</form>
+					</li>
 				</ul>
 			</li>
 		</c:if>

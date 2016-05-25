@@ -19,6 +19,11 @@
 				<li><a href="/user/myaccount.jsp">My Account</a></li>
 				<li><a href="/community/allusers.jsp">Browse Users</a></li>
 				<li>
+					<form action="/community/MatchMakerServlet.do" method="get">
+						<a href="/community/MatchMakerServlet.do">Find Match</a>
+					</form>
+				</li>
+				<li>
 					<form action="/user/LogoutServlet.do" method="get">
 						<a href="/user/LogoutServlet.do">Logout</a>
 					</form>

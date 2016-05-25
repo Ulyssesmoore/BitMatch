@@ -190,7 +190,6 @@ public class User {
 		{
 			difference--;
 		}
-		System.out.println(difference);
 		return difference;
 	}
 

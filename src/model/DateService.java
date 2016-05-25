@@ -37,7 +37,6 @@ public class DateService {
 		    if (us.getUserID()==u.getUserID())
 		        iter.remove();
 		}
-		System.out.println(allUsers.size());
 		
 		return b;
 	}
@@ -83,9 +82,10 @@ public class DateService {
 		u.setUserID(lastUserID()+1);
 	}
 	
-	public void readAll()
+	public ArrayList<User> readAll()
 	{
 		allUsers = (ArrayList<User>) ddao.read();
+		return allUsers;
 	}
 	
 	public void updateUser(User u)
