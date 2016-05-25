@@ -16,7 +16,7 @@
 		<c:set var="amount" scope="request" value="${empty param.filter? 6: param.filter}"/>
 		<div id="minimum">
 			<div class="wrapper" id="alluserdiv">
-				<h1 class="header accountname"><span class="icon icon-users"></span>Find Your Match</h1>
+				<h1 class="header accountname"><span class="icon icon-heart"></span>Find Your Match</h1>
 				<div id="pages">
 					<c:if test="${offset!=0}">
 						<a href="/community/allusers.jsp?start=0&filter=${amount}">&lt; First</a>
@@ -40,7 +40,7 @@
 				<div id="users">
 					<c:forEach items="${matchList}" var="user" begin="${offset*amount}" end="${offset*amount+(amount-1)}">
 						<c:if test="${user.username.equals(loggedUser.username) }">
-							<a href="/user/myaccount.jsp?filter=${amount }">
+							<a href="/user/myaccount.jsp">
 						</c:if>
 						<c:if test="${!user.username.equals(loggedUser.username) }">
 							<a href="/community/GetUserServlet.do?userpage=${user.username}">

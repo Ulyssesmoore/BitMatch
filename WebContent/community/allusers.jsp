@@ -40,7 +40,7 @@
 				<div id="users">
 					<c:forEach items="${userlist}" var="user" begin="${offset*amount}" end="${offset*amount+(amount-1)}">
 						<c:if test="${user.username.equals(loggedUser.username) }">
-							<a href="/user/myaccount.jsp?filter=${amount }">
+							<a href="/user/myaccount.jsp">
 						</c:if>
 						<c:if test="${!user.username.equals(loggedUser.username) }">
 							<a href="/community/GetUserServlet.do?userpage=${user.username}">

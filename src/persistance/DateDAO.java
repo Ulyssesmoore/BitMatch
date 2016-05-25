@@ -28,14 +28,13 @@ public class DateDAO {
 			pstmt.setInt(8, u.getMaxAge());
 			pstmt.setString(9, u.getPassword());
 			pstmt.executeUpdate();
-			PreparedStatement pstmt2 = conn.prepareStatement("INSERT INTO profile(userID, description, job, hobby, country, hometown, smoker) VALUE(?,?,?,?,?,?,?)");
-			pstmt2.setInt(1, u.getUserID());
+			PreparedStatement pstmt2 = conn.prepareStatement("INSERT INTO profile(description, job, hobby, country, hometown, smoker) VALUE(?,?,?,?,?,?)");
+			pstmt2.setString(1, "");
 			pstmt2.setString(2, "");
 			pstmt2.setString(3, "");
 			pstmt2.setString(4, "");
 			pstmt2.setString(5, "");
-			pstmt2.setString(6, "");
-			pstmt2.setInt(7, 0);
+			pstmt2.setInt(6, 0);
 			pstmt2.executeUpdate();
 			conn.close();
 		 }
@@ -137,5 +136,26 @@ public class DateDAO {
 			e.printStackTrace();
 		}
 		return b;
+	}
+	
+	public int getLastUserID()
+	{
+		int i = 0;
+		try{
+			Class.forName("com.mysql.jdbc.Driver").newInstance();
+			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bitmatch","root","");
+			System.out.println("Database Connected!");
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT MAX(userID) FROM users");
+			while(rs.next())
+			{
+				i = rs.getInt("MAX(userID)");
+			}
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		return i;
 	}
 }

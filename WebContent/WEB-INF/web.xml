@@ -32,6 +32,7 @@
     <servlet-name>MatchMakerServlet</servlet-name>
     <servlet-class>controller.MatchMakerServlet</servlet-class>
   </servlet>
+  
   <servlet-mapping>
     <servlet-name>LoginServlet</servlet-name>
     <url-pattern>/LoginServlet.do</url-pattern>
@@ -64,7 +65,31 @@
     <servlet-name>MatchMakerServlet</servlet-name>
     <url-pattern>/community/MatchMakerServlet.do</url-pattern>
   </servlet-mapping>
+  
   <listener>
     <listener-class>utils.MyServletContextListener</listener-class>
   </listener>
+  
+  <filter>
+  	<filter-name>FirstFilter</filter-name>
+  	<filter-class>utils.CommunityFilter</filter-class>
+  </filter>
+  <filter>
+  	<filter-name>SecondFilter</filter-name>
+  	<filter-class>utils.UserFilter</filter-class>
+  </filter>
+  
+  <filter-mapping>
+  	<filter-name>FirstFilter</filter-name>
+  	<url-pattern>/community/*</url-pattern>
+  	<dispatcher>REQUEST</dispatcher>
+  	<dispatcher>FORWARD</dispatcher>
+  </filter-mapping>
+  
+  <filter-mapping>
+  	<filter-name>SecondFilter</filter-name>
+  	<url-pattern>/user/*</url-pattern>
+  	<dispatcher>REQUEST</dispatcher>
+  	<dispatcher>FORWARD</dispatcher>
+  </filter-mapping>
 </web-app>

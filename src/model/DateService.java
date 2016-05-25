@@ -55,8 +55,7 @@ public class DateService {
 	}
 	
 	public int lastUserID(){
-		User u = allUsers.get(allUsers.size()-2);
-		return u.getUserID();
+		return ddao.getLastUserID();
 	}
 	
 	public ArrayList<User> getAllUsers(){
@@ -75,11 +74,28 @@ public class DateService {
 		}
 		return u;
 	}
+	
+	public boolean checkUsername(String username)
+	{
+		boolean b=false;
+		readAll();
+		System.out.println(allUsers.size());
+		for(User u: allUsers)
+		{
+			if(u.getUsername().equals(username))
+			{
+				b=true;
+			}
+		}
+		return b;
+	}
+	
 	public void createUser(User u)
 	{
+		u.setUserID(lastUserID()+1);
+		System.out.println(lastUserID()+1);
 		ddao.create(u);
 		registerUserForm(u);
-		u.setUserID(lastUserID()+1);
 	}
 	
 	public ArrayList<User> readAll()

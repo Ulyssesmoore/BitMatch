@@ -185,7 +185,6 @@ public class User {
 		catch(ParseException pe){};
 		
 		int difference = currentDate.get(Calendar.YEAR) - date.get(Calendar.YEAR);
-		System.out.println(difference);
 		if(currentDate.get(Calendar.MONTH)<date.get(Calendar.MONTH)||(currentDate.get(Calendar.MONTH)==date.get(Calendar.MONTH)&&currentDate.get(Calendar.DAY_OF_MONTH)<date.get(Calendar.DAY_OF_MONTH)))
 		{
 			difference--;

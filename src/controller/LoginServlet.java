@@ -18,6 +18,7 @@ public class LoginServlet extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException
 	{
 		super.init(config);
+		getServletContext().setAttribute("loggedUser", null);
 	}
 	
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
@@ -34,6 +35,7 @@ public class LoginServlet extends HttpServlet {
 		
 		DateService ds= ServiceProvider.getDateService();
 		User u = ds.loginUser(username, password);
+		getServletContext().setAttribute("loggedUser", u);
 		if(u==null)
 		{
 			req.setAttribute("loginerror", "Username and/or password is incorrect!");
@@ -41,9 +43,9 @@ public class LoginServlet extends HttpServlet {
 			return;
 		}
 		req.setAttribute("loginerror", "");
-		getServletContext().setAttribute("loggedUser", u);
+		
 		resp.addCookie(new Cookie("cUsername", u.getUsername()));
-		req.getRequestDispatcher("/user/myaccount.jsp").forward(req, resp);
 		getServletContext().setAttribute("userlist", ds.getAllUsers());
+		req.getRequestDispatcher("/user/myaccount.jsp").forward(req, resp);
 	}
 }
